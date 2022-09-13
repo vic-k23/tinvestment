@@ -128,35 +128,7 @@ class TinkoffClient:
             setattr(request, 'id_type', _instruments_pb.INSTRUMENT_ID_TYPE_FIGI)
             setattr(request, 'id', figi)
             response = await stub.GetInstrumentBy(request, metadata=self.metadata)
-            """
-            Instrument:
-            figi string	Figi-идентификатор инструмента.
-            ticker string	Тикер инструмента.
-            class_code - string - Класс-код инструмента.
-            isin - string - Isin-идентификатор инструмента.
-            lot - int32 - Лотность инструмента. Возможно совершение операций только на количества ценной бумаги, кратные 
-                            параметру lot.
-            currency - string - Валюта расчётов.
-            klong - Quotation - Коэффициент ставки риска длинной позиции по инструменту.
-            kshort - Quotation - Коэффициент ставки риска короткой позиции по инструменту.
-            dlong - Quotation - Ставка риска минимальной маржи в лонг. Подробнее: ставка риска в лонг
-            dshort - Quotation - Ставка риска минимальной маржи в шорт. Подробнее: ставка риска в шорт
-            dlong_min - Quotation - Ставка риска начальной маржи в лонг. Подробнее: ставка риска в лонг
-            dshort_min - Quotation - Ставка риска начальной маржи в шорт. Подробнее: ставка риска в шорт
-            short_enabled_flag - bool - Признак доступности для операций в шорт.
-            name - string - Название инструмента.
-            exchange - string - Торговая площадка.
-            country_of_risk - string - Код страны риска, т.е. страны, в которой компания ведёт основной бизнес.
-            country_of_risk_name - string - Наименование страны риска, т.е. страны, в которой компания ведёт основной 
-                                            бизнес.
-            instrument_type - string - Тип инструмента.
-            trading_status - SecurityTradingStatus - Текущий режим торгов инструмента.
-            otc_flag - bool - Признак внебиржевой ценной бумаги.
-            buy_available_flag - bool - Признак доступности для покупки.
-            sell_available_flag - bool - Признак доступности для продажи.
-            min_price_increment - Quotation - Шаг цены.
-            api_trade_available_flag - bool - Признак доступности торгов через API.
-            """
+            
             instrument_info = {
                 "figi": response.instrument.figi,  # Figi-идентификатор инструмента.
                 "ticker": response.instrument.ticker,  # Тикер инструмента.
